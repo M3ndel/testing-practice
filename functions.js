@@ -73,4 +73,22 @@ function caesarCipher(str, shift) {
 	return cipher
 }
 
-module.exports = {capitalize, reverseString, calculator, caesarCipher}
+function analyzeArray(arr) {
+	for (let element of arr) {
+		if (typeof element != typeof 1) throw new TypeError()
+	}
+	let length = arr.length
+	if (length == 0) throw new Error()
+	let average = arr.reduce((a, b) => {return a+b}, 0) / length
+	let min = arr.reduce((a, b) => {return (a>b ? b : a)}, Infinity)
+	let max = arr.reduce((a, b) => {return (a<b ? b : a)}, -Infinity)
+
+	return {
+		average,
+		min,
+		max,
+		length
+	}
+}
+
+module.exports = {capitalize, reverseString, calculator, caesarCipher, analyzeArray}

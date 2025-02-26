@@ -91,3 +91,25 @@ it('should encrpyt the message', ()=>{
 	expect(functions.caesarCipher('Hello, World!', -1))
 	.toBe(functions.caesarCipher('Hello, World!', 25))
 })
+
+it('should throw error', ()=>{
+	expect(() => {
+		functions.analyzeArray([])
+	})
+	.toThrow(Error)
+
+	expect(() => {
+		functions.analyzeArray([1,8,'3',4,2,6])
+	})
+	.toThrow(TypeError)
+})
+
+it('should analyze the array', ()=>{
+	expect(functions.analyzeArray([1,8,3,4,2,6]))
+	.toEqual({
+		average: 4,
+		min: 1,
+		max: 8,
+		length: 6
+	 })
+})
