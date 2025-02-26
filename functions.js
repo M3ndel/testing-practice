@@ -49,4 +49,28 @@ class calculator {
 	}
 }
 
-module.exports = {capitalize, reverseString, calculator}
+function caesarCipher(str, shift) {
+	if(typeof str != typeof 'string') {
+		throw new TypeError()
+	}
+
+	if(typeof shift != typeof 1) {
+		throw new TypeError()
+	}
+
+	cipher = ''
+	for (let i=0; i < str.length; i++) {
+		let char = str.charCodeAt(i)
+		if (char >= 97 && char <= 122) {
+			cipher += String.fromCharCode((char - 97 + shift) % 26 + 97)
+		}
+		else if (char >= 65 && char <= 97) {
+			cipher += String.fromCharCode((char - 65 + shift) % 26 + 65)
+		} else {
+			cipher += str[i]
+		}
+	}
+	return cipher
+}
+
+module.exports = {capitalize, reverseString, calculator, caesarCipher}

@@ -64,3 +64,30 @@ it('should calculate', ()=>{
 	expect(functions.calculator.multiply(5, 10))
 	.toBe(50)
 })
+
+it('should throw error', ()=>{
+	expect(() => {
+		functions.caesarCipher({}, 3)
+	})
+	.toThrow(TypeError)
+
+	expect(() => {
+		functions.caesarCipher({}, '3')
+	})
+	.toThrow(TypeError)
+})
+
+it('should encrpyt the message', ()=>{
+	expect(functions.caesarCipher('Hello, World!', 3))
+	.toBe('Khoor, Zruog!')
+})
+
+it('should not change the message', ()=>{
+	expect(functions.caesarCipher('Hello, World!', 26))
+	.toBe('Hello, World!')
+})
+
+it('should encrpyt the message', ()=>{
+	expect(functions.caesarCipher('Hello, World!', -1))
+	.toBe(functions.caesarCipher('Hello, World!', 25))
+})
